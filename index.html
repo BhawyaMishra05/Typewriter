@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Typewriter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="black">
+
+  <div class="paper-grain" aria-hidden="true"></div>
+
+  <div class="desk-card">
+  <main class="typewriter-scene">
+
+    <!-- CARRIAGE RAIL -->
+    <div class="carriage-rail" id="carriageRail">
+      <div class="carriage-knob"></div>
+      <div class="carriage-indicator" id="carriageIndicator"></div>
+      <div class="carriage-knob"></div>
+    </div>
+
+    <!--
+      PAPER VIEWPORT — a fixed-height window.
+      .paper-sheet slides LEFT (translateX) as you type a line,
+      snaps back + nudges UP (translateY) on Enter/newline.
+    -->
+    <div class="paper-viewport" id="paperViewport">
+      <div class="paper-sheet" id="paperSheet">
+        <div class="ruled-lines" aria-hidden="true"></div>
+        <div class="margin-line"  aria-hidden="true"></div>
+        <div class="paper-content" id="paperContent">
+          <!-- JS injects one .type-line div per line here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- thin gap between paper bottom and keyboard top -->
+    <div class="paper-kb-gap" aria-hidden="true"></div>
+
+    <!-- TYPEWRITER BODY -->
+    <div class="typewriter-body">
+      <div class="typewriter-top-bar">
+        <div class="ribbon-spool"></div>
+        <div class="ribbon-spool"></div>
+      </div>
+      <div class="keyboard" id="keyboard"></div>
+      <div class="typewriter-base"><div class="base-stripe"></div></div>
+    </div>
+
+  </main>
+
+  <!-- CONTROL PANEL — right sidebar with brownish border -->
+  <aside class="control-panel" id="controlPanel">
+
+    <div class="panel-label">⚙ Controls</div>
+
+    <div class="control-group">
+      <span class="control-title">Page Theme</span>
+      <div class="theme-swatches" id="themeSwatches">
+        <button class="swatch active" data-theme="black"  title="Dark"   style="background:#1a1612;"></button>
+        <button class="swatch"        data-theme="cream"  title="Cream"  style="background:#f5f0e8;border:1px solid #bbb;"></button>
+        <button class="swatch"        data-theme="white"  title="White"  style="background:#fafafa;border:1px solid #ccc;"></button>
+        <button class="swatch"        data-theme="yellow" title="Yellow" style="background:#f9f0c8;border:1px solid #c8a800;"></button>
+        <button class="swatch"        data-theme="beige"  title="Beige"  style="background:#e8dcc8;border:1px solid #bbb;"></button>
+        <button class="swatch"        data-theme="brown"  title="Brown"  style="background:#7a5c3a;"></button>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <span class="control-title">Ink Colour</span>
+      <div class="ink-swatches" id="inkSwatches">
+        <button class="ink-swatch active" data-ink="#1a1208" title="Carbon"  style="background:#1a1208;"></button>
+        <button class="ink-swatch"        data-ink="#1b3a1b" title="Forest"  style="background:#1b3a1b;"></button>
+        <button class="ink-swatch"        data-ink="#0f1f4a" title="Navy"    style="background:#0f1f4a;"></button>
+        <button class="ink-swatch"        data-ink="#6b0000" title="Crimson" style="background:#6b0000;"></button>
+        <button class="ink-swatch"        data-ink="#4a2800" title="Sepia"   style="background:#4a2800;"></button>
+        <button class="ink-swatch"        data-ink="#1e3d30" title="Teal"    style="background:#1e3d30;"></button>
+        <label class="ink-swatch ink-custom" title="Custom colour">
+          <span>+</span>
+          <input type="color" id="inkColorPicker" value="#1a1208" />
+        </label>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="toggle-row">
+        <span>🔊 Sound</span>
+        <div class="toggle-switch">
+          <input type="checkbox" id="soundToggle" checked />
+          <span class="slider"></span>
+        </div>
+      </label>
+      <label class="toggle-row">
+        <span>🎞 Ink Bleed</span>
+        <div class="toggle-switch">
+          <input type="checkbox" id="inkBleedToggle" checked />
+          <span class="slider"></span>
+        </div>
+      </label>
+    </div>
+
+    <div class="control-group">
+      <button class="panel-btn"         id="clearBtn">🗑  Clear</button>
+      <button class="panel-btn primary" id="saveBtn">💾  Save Text</button>
+      <button class="panel-btn"         id="saveImgBtn">🖼  Save Image</button>
+    </div>
+
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
