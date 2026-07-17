@@ -27,7 +27,11 @@ It focuses on recreating the distraction-free writing experience while adding us
 - Writing statistics
 - Collaborative editing
 
+## Live Demo
+🔗 *https://bhawyamishra05.github.io/Typewriter/*
+
 ## Current Status
 Fully functional frontend application.
+
 
 <img width="1171" height="678" alt="image" src="https://github.com/user-attachments/assets/aadf45d5-fed0-4827-82ae-5f6972b35527" />
